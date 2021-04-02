@@ -1,0 +1,36 @@
+.header {
+    width: 100%;
+    padding: 25px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+
+    @include media('>=tablet') {
+        padding: 44px 0;
+    }
+
+    &-holder {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .logo {
+        width: 170px;
+        display: flex;
+        align-items: center;
+
+        @include media('>=tablet') {
+            width: 300px;
+        }
+
+        @include media('>=desktop') {
+            width: 366px;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+        }
+    }
+}

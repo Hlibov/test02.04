@@ -1,0 +1,28 @@
+body {
+    font-size: $font-size-base;
+    font-family: $base-font-sans-serif;
+    background-color: $base-background-color;
+
+    @include media(">=tablet") {
+        font-size: $font-size-base + 2px;
+    }
+}
+
+.wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
+
+    @include media(">=tablet") {
+        padding: 0 30px;
+    }
+}
+
+.lead {
+    margin-bottom: 20px;
+}

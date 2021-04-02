@@ -1,0 +1,319 @@
+.promo {
+
+    &-slider {
+
+        // .container {
+        //     margin: 0;
+        //     margin-right: auto;
+        // }
+    }
+
+    &-content-holder {
+        padding: 50px 0;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        @include media('>=tablet') {
+            height: 100vh;
+        }
+    }
+
+    &-img-holder {
+        @include size(100%);
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    &-text-holder {
+
+        @include media('>=tablet') {
+            max-width: 45%;
+        }
+    }
+
+    h1 {
+        position: relative;
+        display: inline-block;
+
+        &::before {
+            @include size (61px, 4px);
+
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            transform: translateX(-15%);
+            background-color: $blue-00;
+
+            @include media('>=tablet') {
+                width: 81px;
+            }
+
+            @include media('>=desktop') {
+                width: 96px;
+                bottom: -11px;
+            }
+        }
+    }
+
+    .lead {
+        @include media('>=tablet') {
+            margin-bottom: 48px;
+        }
+    }
+}
+
+.logos {
+
+    &-holder {
+        padding: 10px 0;
+
+        @include media('>=tablet') {
+            padding: 24px 0;
+        }
+    }
+
+    &-list {
+        @extend %listreset;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: -5px -10px;
+
+        @include media('>=widescreen') {
+            margin-left: -22px;
+            margin-right: -22px;
+            flex-wrap: nowrap;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 10px;
+            width: 33.333%;
+
+            @include media('>=widescreen') {
+                padding: 5px 22px;
+            }
+        }
+    }
+}
+
+.support-header-holder {
+    background-color: $second-background-color;
+    text-align: center;
+    padding: 50px 0 0;
+
+    @include media('>=tablet') {
+        padding: 82px 0 0;
+    }
+
+    h2 {
+
+        @include media('>=tablet') {
+            margin-bottom: 22px;
+        }
+    }
+
+    .lead {
+        word-spacing: 1px;
+        margin-bottom: 40px;
+
+        @include media('>=tablet') {
+            margin-bottom: 72px;
+        }
+    }
+}
+
+.support-bottom-holder {
+    padding: 50px 0;
+    color: $second-text-color;
+
+    @include media('>=tablet') {
+        text-align: center;
+        padding: 61px 0 80px;
+        margin-top: -7px;
+        background: $base-text-color;
+    }
+
+    @include media('>=desktop') {
+        margin: 0 auto;
+    }
+
+    h3 {
+        font-size: 24px;
+        color: $alt-text-color;
+        word-spacing: 3px;
+
+        @include media('>=tablet') {
+            margin-bottom: 26px;
+        }
+    }
+
+    .lead {
+
+        @include media('>=tablet') {
+            margin-bottom: 39px;
+        }
+    }
+}
+
+.block-img {
+    background-color: $alt-background-color;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 50px 0;
+    text-align: center;
+    margin-bottom: 50px;
+
+    @include media('>=tablet') {
+        padding: 70px 0 0;
+        margin-bottom: 70px;
+    }
+
+    @include media('>=widescreen') {
+        padding: 92px 0 0;
+        margin-bottom: 112px;
+    }
+
+    .img-holder {
+        position: relative;
+        max-width: 756px;
+        border: 8px solid $white;
+        margin: 0 auto;
+
+
+        @include media('>=tablet') {
+            bottom: -52px;
+        }
+    }
+
+    picture {
+        display: flex;
+        height: 100%;
+        position: relative;
+
+        &::before {
+            @include size(100%);
+
+            content: "";
+            position: absolute;
+            background-color: $blue-006;
+            opacity: 0.3;
+            top: 0;
+            left: 0;
+        }
+    }
+}
+
+.our-team {
+    background-color: $alt-background-color;
+
+    .container {
+        padding: 0;
+    }
+
+    &-holder {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &-img-holder {
+        width: 100%;
+        text-align: center;
+
+        @include media('>=tablet') {
+            width: 50%;
+        }
+
+        @include media('>=widescreen') {
+            width: 608px;
+        }
+
+        picture {
+            width: 100%;
+            display: flex;
+            height: 100%;
+
+            img {
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+
+    &-text-holder {
+        width: 100%;
+        padding: 20px 15px;
+        line-height: 1.66;
+
+        @include media('>=tablet') {
+            width: 50%;
+            padding: 32px 30px 50px;
+        }
+
+        @include media('>=widescreen') {
+            width: calc(100% - 608px);
+            padding-right: 85px;
+        }
+
+        .lead {
+            word-spacing: -2px;
+
+            @include media('>=tablet') {
+                margin-bottom: 13px;
+            }
+        }
+
+        .text {
+
+            @include media('>=tablet') {
+                margin-bottom: 44px;
+            }
+        }
+
+        h2 {
+            position: relative;
+
+            @include media('>=tablet') {
+                margin-bottom: 15px;
+            }
+
+            &::before {
+                @include size(80px, 4px);
+
+                content: "";
+                position: absolute;
+                background-color: $blue-00;
+                bottom: -2px;
+                left: 50%;
+                transform: translate(-26%);
+
+                @include media('>=tablet') {
+                    width: 100px;
+                }
+
+                @include media('>=desktop') {
+                    width: 120px;
+                }
+
+            }
+        }
+    }
+}

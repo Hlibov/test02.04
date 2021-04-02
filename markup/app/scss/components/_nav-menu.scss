@@ -1,0 +1,289 @@
+body {
+    &.nav-active {
+        overflow: hidden;
+    }
+}
+
+.nav-menu {
+    margin-right: -15px;
+
+    .opener {
+        @include size(31px);
+
+        display: block;
+        position: relative;
+        text-indent: -9999px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 3px;
+        overflow: hidden;
+        z-index: 15;
+
+        @include media('>=desktop') {
+            display: none;
+        }
+
+        &::before,
+        &::after,
+        span {
+            position: absolute;
+            top: 16px;
+            left: 25%;
+            right: 25%;
+            height: 3px;
+            margin-top: -2px;
+            background: white;
+            border-radius: 4px;
+            transition: all 0.2s linear 0s;
+        }
+
+        .nav-active & {
+            span {
+                opacity: 0;
+            }
+
+            &::before,
+            &::after {
+                transform: rotate(45deg);
+                top: 16px;
+                left: 15%;
+                right: 15%;
+            }
+
+            &::after {
+                transform: rotate(-45deg);
+            }
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            top: 10px;
+        }
+
+        &::after {
+            top: 22px;
+        }
+    }
+
+    .drop {
+        @include animate(transform top);
+
+        @include media('<desktop') {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateX(100%);
+            height: 100vh;
+            z-index: 10;
+        }
+
+        &::before {
+            @include media('<desktop') {
+                @include size(100%);
+
+                position: absolute;
+                content: "";
+                background-color: $black;
+                opacity: 0.6;
+                z-index: -1;
+            }
+        }
+
+        ul {
+            @extend %listreset;
+        }
+
+        .list-upstairs {
+
+            @include media('<desktop') {
+                max-width: 320px;
+                height: 100%;
+                padding: 84px 14px 18px;
+                margin-left: auto;
+                background-color: $nav-background-color;
+            }
+
+            @include media('>=desktop') {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            li {
+                position: relative;
+
+                >a {
+                    &.open-drop-box {
+                        position: absolute;
+                        top: 8px;
+                        right: 9px;
+                        color: $nav-text-color;
+
+                        @include media('>=desktop') {
+                            top: 0;
+                            right: 0;
+                            pointer-events: none;
+                        }
+
+                        &:hover {
+                            color: $nav-text-color-hover;
+                        }
+                    }
+                }
+
+                &.active {
+                    color: $nav-text-color-hover;
+
+                    a::before {
+                        opacity: 1;
+                    }
+
+                    >a {
+                        color: inherit;
+                    }
+                }
+
+                &:hover {
+                    >.drop-box {
+                        @include media('>=desktop') {
+                            left: -10px;
+                            opacity: 1;
+                        }
+                    }
+
+                }
+
+                [class^="icon-"] {
+                    color: inherit;
+                }
+            }
+
+            >li {
+                text-transform: uppercase;
+                color: $nav-text-color;
+                font-size: 16px;
+
+                @include media('>=desktop') {
+                    margin-left: 40px;
+                }
+
+                &:first-child {
+
+                    @include media('<desktop') {
+                        border: 1px solid $white;
+                        border-width: 1px 0 1px;
+                    }
+                }
+
+                &+li {
+
+                    @include media('<desktop') {
+                        border-bottom: 1px solid $white;
+                    }
+                }
+
+                a {
+                    display: block;
+                    text-decoration: none;
+                }
+
+                >a:not(.open-drop-box) {
+                    position: relative;
+                    text-decoration: none;
+                    color: inherit;
+
+                    @include media('<desktop') {
+                        padding: 7px 7px 7px 15px;
+                    }
+
+                    @include media('>=desktop') {
+                        padding: 0 30px 0 0;
+                    }
+
+                    &:hover {
+                        color: $nav-text-color-hover;
+
+                        &::before {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-box {
+            width: 100%;
+            border-top: 1px solid $white;
+
+            @include media('<desktop') {
+                padding: 6px 30px;
+            }
+
+            @include media('>=desktop') {
+                position: absolute;
+                left: -9999px;
+                top: 100%;
+                opacity: 0;
+                transition: opacity 0.25s ease-in;
+                background-color: $nav-alt-background-color;
+                border: none;
+                min-width: 160px;
+            }
+
+            a:not(.open-drop-box) {
+                padding: 6px 30px;
+                color: $nav-text-color;
+
+                @include media('>=desktop') {
+                    padding: 6px 8px;
+                }
+
+                &:hover {
+                    color: $white;
+                    background-color: $base-link-color;
+                }
+            }
+
+            li {
+                &:hover {
+                    .drop-box {
+                        @include media('>=desktop') {
+                            left: 100% !important;
+                            top: 0 !important;
+                        }
+                    }
+
+                }
+            }
+
+            .drop-box {
+                width: 100%;
+
+
+                a:not(.open-drop-box) {
+                    padding: 6px 45px;
+                    color: $nav-text-color;
+
+                    @include media('>=desktop') {
+                        padding: 6px 10px 6px 18px;
+                    }
+
+                    &:hover {
+                        color: $white;
+                    }
+                }
+
+
+            }
+
+            .open-drop-box {
+                top: 7px !important;
+                right: 4px !important;
+            }
+        }
+
+        .nav-active & {
+            transform: translateX(0);
+        }
+    }
+}
